@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>AutoSourcer Extension Options</title>
+</head>
+
+<style>
+body{
+		background-color: LIGHTGRAY;
+		font-family: 'Open Sans', sans-serif;
+	}
+	textarea {
+		display: block;
+		width: 50%;
+		resize: none;
+	}
+
+	button {
+		display: inline;
+		margin: 0 auto;
+		width: 50%;
+		height: 30px;
+		padding: 2px;
+		border-radius: 25px;
+		border: 2px solid;
+		padding-left: 10px;
+		padding-right: 10px;
+		background-color: SLATEGRAY;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 15px;
+	}
+
+	button:active {
+		background-color: LIGHTSLATEGRAY;
+		box-shadow: 0 1px #666;
+		transform: translateY(1px);
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	button:focus {
+		outline: 0;
+	}
+
+	input[type=text] {
+		vertical-align: middle;
+		position: inherit;
+		display: inline;
+		margin: 3 auto;
+		width: 50%;
+		height: 20px;
+	}
+
+	p {
+		margin: 0 auto;
+		display: inline-block;
+		text-align: center;
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	div.layout {
+		text-align: center;
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	div.center {
+		width: 75%;
+		margin: 0 auto;
+		text-align: left;
+		font-size: 16px;
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	div.indent {
+		width: 75%;
+		margin: 0 30;
+		text-align: left;
+		font-family: 'Open Sans', sans-serif;
+	}
+
+
+	input[type=checkbox],
+	input[type=radio] {
+		vertical-align: middle;
+		position: inherit;
+		bottom: 1px;
+	}
+
+	input[type=radio] {
+		bottom: 2px;
+	}
+
+	ul {
+		list-style-type: square;
+		padding-top: 4px;
+		padding-bottom: 10px;
+		font-size: 16px;
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	ol {
+
+		padding-top: 4px;
+		padding-bottom: 10px;
+		font-size: 16px;
+		font-family: 'Open Sans', sans-serif;
+	}
+	li {
+
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-size: 18px;
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	/* Tooltip container */
+
+	.tooltip {
+		position: static;
+		display: inline;
+		border-bottom: 1px dotted black;
+		/* If you want dots under the hoverable text */
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	/* Tooltip text */
+
+	.tooltip .tooltiptext {
+		visibility: hidden;
+		width: 120px;
+		background-color: black;
+		color: #fff;
+		text-align: center;
+		padding: 5px 0;
+		border-radius: 6px;
+
+		/* Position the tooltip text - see examples below! */
+		position: absolute;
+		z-index: 1;
+		width: 350px;
+		top: 30%;
+		left: 50%;
+		margin-left: -175px;
+		/* Use half of the width (120/2 = 60), to center the tooltip */
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	/* Show the tooltip text when you mouse over the tooltip container */
+
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
+	}
+
+	a {
+		color: dodgerblue;
+	}
+
+	img.center {
+		display: inline-block;
+		margin: 0 auto;
+	}
+
+
+	.toggle-box {
+	  display: none;
+	}
+
+	.toggle-box + label {
+	  cursor: pointer;
+	  display: block;
+	  font-weight: bold;
+	  line-height: 21px;
+	  margin-bottom: 5px;
+		color: dodgerblue;
+	}
+
+	.toggle-box + label + div {
+	  display: none;
+	  margin-bottom: 10px;
+	}
+
+	.toggle-box:checked + label + div {
+	  display: block;
+	}
+
+	.toggle-box + label:before {
+	  background-color: #4F5150;
+	  -webkit-border-radius: 10px;
+	  -moz-border-radius: 10px;
+	  border-radius: 10px;
+	  color: #FFFFFF;
+	  content: "+";
+	  display: block;
+	  float: left;
+	  font-weight: bold;
+	  height: 20px;
+	  line-height: 20px;
+	  margin-right: 5px;
+	  text-align: center;
+	  width: 20px;
+	}
+
+	.toggle-box:checked + label:before {
+	  content: "\2212";
+	}
+
+</style>
+
+<body>
+	<div class="layout">
+		<h1>AutoSourcer Extension Options</h1>
+		Account Email:
+		</br>
+
+
+		<input type="text" id="accountIDInput" value="">
+	</br>
+
+	</br>
+	</br>
+	<div id="selectPosition">
+
+		<b>Positions</b>
+		</br>
+	</div>
+		</br>
+		<div id="baseLink"></div>
+		</br>
+		</br>
+		<button id="save">Save</button>
+		</br>
+		</br>
+		<button id="btnClearSettings" value="">Clear Cache</button>
+		</br>
+		</br>
+
+		</br>
+		</br>
+		</br>
+		</br>
+
+		<h1>This chrome extension automates the scraping of profile information from LinkedIn Recruiter.</h1>
+		<h4 style="color:red">This extension is still in testing phases and will be updated periodically.</h4>
+		<div class="center">
+
+	</div>
+		</div>
+
+</br>
+	</div>
+	<div class="center">
+		<input class="toggle-box" id="identifier-1" type="checkbox" >
+		<label for="identifier-1">Installation Instructions:</label>
+		<div>
+			<h3>First create an airtable account.</h3>
+			</br>
+			<a href="https://airtable.com/account" target="_blank"><font color="blue">https://airtable.com/account</font></a>
+			</br>
+			</br>
+
+</br>
+		<p><br /><strong>Creating a Dummy Google Chrome Account:</strong></p>
+		<font color="red"><h5>For best results run this extension in it's own Chrome container/window</h5></font>
+		<ol>
+
+				<li>Click the accounts button near the Maximize/Minimize/Close buttons in the top right.
+				</br>
+					</li>
+				<li>Click on the Add button at the bottom under Other Profiles.
+				</br>
+
+					</li>
+					<li>
+						A new popup should appear, click Continue without an account.
+					</br>
+
+					</li>
+					<li>
+						Enter any name and color scheme you want, I titled mine AutoSourcer, then click Done.
+					</br>
+
+					</li>
+					<li>
+						Open up your new chrome account window and install the AutoSourcer extension.
+
+					</li>
+					<li>
+						You will also need to disable a flag on chrome to make this more stable:
+					</br>
+					</br>
+						Disable the following flag: <a id="flaglink" href="chrome://flags/#calculate-native-win-occlusion" target="_blank">chrome://flags/#calculate-native-win-occlusion</a>
+
+					</li>
+			</li>
+
+		</ol>
+		</div>
+
+</br>
+		<input class="toggle-box" id="identifier-4" type="checkbox" >
+		<label for="identifier-4">Notes:</label>
+		<div>
+			<ul>
+
+	<div class="indent">
+				<div>
+				</br>
+
+							<b>Starting the Extension</b>
+						</br>
+						</br>
+								<li>
+									Initial setup to get this started is pretty simple. We first need to configure our LinkedIn search to provide us with a good chunk of decent looking results. This will vary based on your positions and qualifications and supply of profiles.
+								</li>
+							<li>
+								Note: Hiding previously viewed profiles is highly recommended. This will prevent duplicate profile collection. (Only available in Recruiter Full)
+							</li>
+								<li>
+									Once you have your results where you like them, click on the first profile of the list. This should put you in a large profile scrolling mode, where you can view forward and backwards.
+								</li>
+								<li>
+									When you have the correct profile page in place, go to the extension, make sure everything still looks good, and click Start.
+								</li>
+							
+								<li style="color:red;">This can be run behind other windows but not minimized or Chrome will freeze the tab. </br></br>It will also close out any other open tabs in the browser window so save your work beforehand. </br></br>If you want to run this overnight I recommend setting up a screensaver to prevent screen burn in.</li>
+								 </br>
+				</ul>
+
+				<b>Current Features:</b>
+			</br>
+			</br>
+			<input class="toggle-box" id="identifier-55" type="checkbox" >
+			<label for="identifier-55">Skipping Viewed Profiles</label>
+				<div>
+					<ul>
+						<li>
+							The profile view limit for recruiter lite is 2000 profiles a day. If you hit this limit you can be locked out of your account for sometimes up to 24 hours.
+						</li>
+
+						<li>
+							There are timers built in to randomize the time spent on a profile page. This will in turn make our usage more natural and user like and less likely to be picked up by anti automation methods.
+						</li>
+					
+					</br>
+					<li>
+						Skipping viewed profiles: Will not collect any profile that has been previously viewed at any time. The default skip time is set to anywhere from 5-7 seconds.
+					</li>
+
+				</ul>
+				</div>
+			</br>
+				<input class="toggle-box" id="identifier-56" type="checkbox" >
+				<label for="identifier-56">Collecting Similar Profiles</label>
+					<div>
+						<ul>
+						<li>
+							This function will collect any available similar profiles that are listed on the right side of a profile. This can be in groups of 5 or 10. </br></br><font color="red">Note: There is a record limit of 1200 rows on free airtable accounts. This will quickly fill that quota as it adds 5-10 rows every profile. I recommend only using this on a paid airtable plan.</font></br>
+						</li>
+
+					</ul>
+					</div>
+				</br>
+					<input class="toggle-box" id="identifier-57" type="checkbox" >
+					<label for="identifier-57">Collecting Open to Work profiles</label>
+						<div>
+							<ul>
+
+							<li>
+								This function only works on full Recruiter licenses, not Recruiter Lite. It will add profiles that are open to work in a separate tab that contains more information about what the person is looking for and filters to quickly pick out appropriate profiles for likely active candidates.
+							</li>
+
+						</ul>
+						</div>
+			<ul>
+					<hr>
+
+			<li>Randomized humanlike behavior to have more realistic browsing behaviors to prevent detection from LinkedIn's anti-scraping measures.</li>
+			<li>Built in error reporting - Most errors will be sent to me, and hopefully fixed with future updates. </li>
+			<li>Option to collect similar profiles listed on the side of the profile.</li>
+			<li>Recruiter Full: Option to collect candidates who are open to work with their details.</li>
+		</ul>
+			</br>
+				<b>Features coming in future updates:</b>
+			</br>
+			<ul>
+		<li>Duplicate entry checking before posting to the airtable. This will allow us to save space and reduce how much noise we have in our records.</li>
+
+		  <li>Profile summary including notable points on the profile, this will be an expanded field in a future release.</li>
+			<li>Filter for keywords extracted from the profile</li>
+			<li>Filter for all previously held titles</li>
+			<li>Optimized human like randomization</li>
+			<li>Notifications when reaching database limits</li>
+			<li>Hopefully: Ability to work in minimized mode. </li>
+		</ul>
+			</div> <!--end indent div-->
+
+	</div>    <!--End How to use Div-->
+
+	</div>
+
+	<div class="center">
+</br>
+		<input class="toggle-box" id="identifier-3" type="checkbox" >
+		<label for="identifier-3">Bug Reporting:</label>
+<div>
+	</br>
+	</br>
+		If you run into a bug or think something isn't working right your best bet is to clear the cache by hitting the "Clear Cache" button at the top of the page. This will reset your settings and should clear up any problems.
+	</br>
+	</br>
+		
+		</br>
+
+		<h3>Known Bugs</h3>
+		<ol>
+	<li>
+		Duplicates may occur around page transitions or every 25 profiles. - This should be solved in a later update with duplicate checking before saving.
+	</li>
+
+	</ol>
+	</br>
+	</br>
+	</br>
+	</br>
+		
+</div>
+	</div>
+
+	</div>
+
+	<script src="options.js"></script>
+</body>
+
+</html>

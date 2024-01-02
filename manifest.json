@@ -1,0 +1,33 @@
+{
+    "name": "FoxHunt - AutoSourcer",
+    "options_page": "options.html",
+    "manifest_version": 3,
+    "version": "1.0.00",
+    "description": "AutoSourcing For LinkedIn Recruiter with Airtable",
+    "author": "Matt Fox",
+    "icons": {
+              "128": "/images/icons/icon128.png" },
+
+    "action": {
+        "default_popup": "popup.html"
+    },
+   
+
+    "background": {
+        "service_worker": "background.js"
+      },
+
+    "permissions": [
+        "tabs","storage","activeTab","scripting"
+    ],
+    "host_permissions": [
+    "*://airtable.com/*"
+    ],
+    "content_scripts": [
+      {
+        "matches": [ "*://linkedin.com/*"],
+        "js" : [ "foxhunt.js"],
+        "run_at": "document_idle"
+      }
+  ]
+}
